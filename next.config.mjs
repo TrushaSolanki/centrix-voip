@@ -3,16 +3,8 @@ console.log("API Endpoint:", process.env.NEXT_PUBLIC_API_ENDPOINT);
 /** @type {import('next').NextConfig} */
 // const nextConfig = {};
 const nextConfig = {
-  async rewrites() {
-    return [
-      {
-        source: "/api/proxy/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_ENDPOINT}/:path*`,
-      },
-    ];
-  },
   eslint: {
-    ignoreDuringBuilds: true, // Disables ESLint checks during builds
+    ignoreDuringBuilds: true,
   },
   async headers() {
     return [
@@ -26,6 +18,16 @@ const nextConfig = {
             value: "GET, POST, PUT, DELETE",
           },
         ],
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/api/proxy/:path*",
+        destination: process.env.NEXT_PUBLIC_API_ENDPOINT
+          ? `${process.env.NEXT_PUBLIC_API_ENDPOINT}/:path*`
+          : `https://api.centrixcc.com/api/proxy/:path*`,
       },
     ];
   },
