@@ -1,4 +1,4 @@
-require("dotenv").config();
+import "dotenv/config"; // Import dotenv for environment variables
 console.log("API Endpoint:", process.env.NEXT_PUBLIC_API_ENDPOINT);
 /** @type {import('next').NextConfig} */
 // const nextConfig = {};
