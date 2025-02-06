@@ -1,6 +1,7 @@
+console.log("API Endpoint:", process.env.NEXT_PUBLIC_API_ENDPOINT);
+
 /** @type {import('next').NextConfig} */
 // const nextConfig = {};
-const ServerBaseUrl = process.env.NEXT_PUBLIC_API_ENDPOINT;
 const nextConfig = {
   async headers() {
     return [
@@ -21,7 +22,7 @@ const nextConfig = {
     return [
       {
         source: "/api/proxy/:path*",
-        destination: `${process.env.NEXT_PUBLIC_API_ENDPOINT}:path*`,
+        destination: `https://api.centrixcc.com/:path*`,
       },
     ];
   },
