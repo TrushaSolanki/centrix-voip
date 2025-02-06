@@ -22,7 +22,9 @@ const nextConfig = {
     return [
       {
         source: "/api/proxy/:path*",
-        destination: `https://api.centrixcc.com/:path*`,
+        destination: process.env.NEXT_PUBLIC_API_ENDPOINT
+          ? `${process.env.NEXT_PUBLIC_API_ENDPOINT}/:path*`
+          : `https://api.centrixcc.com/api/proxy/users/login`,
       },
     ];
   },
