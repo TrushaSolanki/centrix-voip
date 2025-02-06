@@ -1,5 +1,5 @@
+require("dotenv").config();
 console.log("API Endpoint:", process.env.NEXT_PUBLIC_API_ENDPOINT);
-
 /** @type {import('next').NextConfig} */
 // const nextConfig = {};
 const nextConfig = {
@@ -24,7 +24,7 @@ const nextConfig = {
         source: "/api/proxy/:path*",
         destination: process.env.NEXT_PUBLIC_API_ENDPOINT
           ? `${process.env.NEXT_PUBLIC_API_ENDPOINT}/:path*`
-          : `https://api.centrixcc.com/api/proxy/users/login`,
+          : `https://api.centrixcc.com/api/proxy/:path*`,
       },
     ];
   },
